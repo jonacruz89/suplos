@@ -36,4 +36,15 @@ class Connection
 
         return [];
     }
+
+    public function query($sql)
+    {
+        $exec = $this->conn->prepare($sql);
+
+        if ($exec->execute()) {
+            return $exec->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        return [];
+    }
 }

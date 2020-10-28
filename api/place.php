@@ -1,12 +1,13 @@
 <?php
 
-class Place
+class Place extends Connection
 {
     static private $db;
 
     public function __construct()
     {
-        self::$db = new Connection();
+        parent::__construct();
+        self::$db = $this;
     }
 
     static function find($id)

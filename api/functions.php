@@ -2,9 +2,9 @@
 
 function dd($data)
 {
-    print_r('<br>');
+    print_r('<pre>');
     print_r($data);
-    print_r('<br>');
+    print_r('</pre>');
     die();
 }
 
