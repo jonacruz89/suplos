@@ -1,33 +1,37 @@
 const API_URL = `${document.location.protocol}//api.${document.location.hostname}`;
 
 let listPlaces = [];
-let listCity = [];
-let listType = [];
 
 getData = async () => {
-  setListPlaces(await apiFetch());
+  listPlaces = await apiFetch();
+  setListPlaces(listPlaces);
   setListCity(await apiFetch("/city"));
   setListType(await apiFetch("/type"));
 };
 
-setListPlaces = (listPlaces) => {
+setListPlaces = (listPlaces, city = "", type = "") => {
   let element = document.getElementById("resultados");
   let html = "";
   listPlaces.forEach((e) => {
-    html += `<div
-                    class="d-flex justify-content-start align-items-center my-2 p-2 rounded"
-                    >
-                    <img src="img/home.jpg" alt="" width="250px" class="mr-3"/>
-                    <div class="">
-                        <p><strong>Dirección:</strong> ${e.address}</p>
-                        <p><strong>Ciudad:</strong> ${e.city}</p>
-                        <p><strong>Teléfono:</strong> ${e.phone}</p>
-                        <p><strong>código postal:</strong> ${e.code}</p>
-                        <p><strong>Tipo:</strong> ${e.type}</p>
-                        <p><strong>Precio:</strong> ${e.price}</p>
-                        <button class="btn btn-success">Guardar</button>
-                    </div>
-                </div>`;
+    if (
+      (city.length == 0 || city == e.city) &&
+      (type.length == 0 || type == e.type)
+    ) {
+      html += `<div
+        class="d-flex justify-content-start align-items-center my-2 p-2 rounded"
+        >
+        <img src="img/home.jpg" alt="" width="250px" class="mr-3"/>
+        <div class="">
+            <p><strong>Dirección:</strong> ${e.address}</p>
+            <p><strong>Ciudad:</strong> ${e.city}</p>
+            <p><strong>Teléfono:</strong> ${e.phone}</p>
+            <p><strong>código postal:</strong> ${e.code}</p>
+            <p><strong>Tipo:</strong> ${e.type}</p>
+            <p><strong>Precio:</strong> ${e.price}</p>
+            <button class="btn btn-success">Guardar</button>
+        </div>
+    </div>`;
+    }
   });
   element.innerHTML = html;
 };
@@ -69,5 +73,12 @@ apiFetch = async (endpoint = "", method = "get") => {
       break;
   }
 };
+
+document.getElementById("submitButton").addEventListener("click", () => {
+  let city = document.getElementById("selectCiudad").value;
+  let type = document.getElementById("selectTipo").value;
+
+  setListPlaces(listPlaces, city, type);
+});
 
 getData();
