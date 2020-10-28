@@ -1,4 +1,2 @@
-## Prueba Intelcost
-Pruebas como desarrollador BackEnd
 ## Ruta Github
-https://github.com/Seriosus/IntelcostPrueba
+https://github.com/jonacruz89/suplos
