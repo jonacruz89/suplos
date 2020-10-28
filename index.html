@@ -1,20 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="css/customColors.css"  media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="css/ion.rangeSlider.css"  media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="css/ion.rangeSlider.skinFlat.css"  media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="css/index.css"  media="screen,projection"/>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Formulario</title>
-  </head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    />
+    <link
+      href="http://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="css/materialize.min.css"
+      media="screen,projection"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="css/customColors.css"
+      media="screen,projection"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="css/ion.rangeSlider.css"
+      media="screen,projection"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="css/ion.rangeSlider.skinFlat.css"
+      media="screen,projection"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="css/index.css"
+      media="screen,projection"
+    />
+
+    <title>Formulario</title>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script>
+  </head>
   <body>
-   <video src="img/video.mp4" id="vidFondo"></video>
+    <video src="img/video.mp4" id="vidFondo"></video>
 
     <div class="contenedor">
       <div class="card rowTitulo">
@@ -26,61 +62,114 @@
             <div class="tituloFiltros">
               <h5>Filtros</h5>
             </div>
-          <div class="filtroCiudad input-field">
-            <p><label for="selectCiudad">Ciudad:</label><br></p>
-            <select name="ciudad" id="selectCiudad">
-              <option value="" selected>Elige una ciudad</option>
-            </select>
+            <div class="filtroCiudad input-field">
+              <p><label for="selectCiudad">Ciudad:</label><br /></p>
+              <select name="ciudad" id="selectCiudad">
+                <option value="" selected>Elige una ciudad</option>
+              </select>
+            </div>
+            <div class="filtroTipo input-field">
+              <p><label for="selecTipo">Tipo:</label></p>
+              <br />
+              <select name="tipo" id="selectTipo">
+                <option value="">Elige un tipo</option>
+              </select>
+            </div>
+            <div class="filtroPrecio">
+              <label for="rangoPrecio">Precio:</label>
+              <input type="text" id="rangoPrecio" name="precio" value="" />
+            </div>
+            <div class="botonField">
+              <input
+                type="button"
+                class="btn white"
+                value="Buscar"
+                id="submitButton"
+              />
+            </div>
           </div>
-          <div class="filtroTipo input-field">
-            <p><label for="selecTipo">Tipo:</label></p>
-            <br>
-            <select name="tipo" id="selectTipo">
-              <option value="">Elige un tipo</option>
-            </select>
+        </form>
+      </div>
+
+      <div class="p-4 mb-4" style="width: 70%">
+        <ul class="nav nav-tabs mx-auto mt-4" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <a
+              class="nav-link active"
+              id="home-tab"
+              data-toggle="tab"
+              href="#home"
+              role="tab"
+              aria-controls="home"
+              aria-selected="true"
+              >Bienes disponibles</a
+            >
+          </li>
+          <li class="nav-item" role="presentation">
+            <a
+              class="nav-link"
+              id="profile-tab"
+              data-toggle="tab"
+              href="#profile"
+              role="tab"
+              aria-controls="profile"
+              aria-selected="false"
+              >Mis Bienes</a
+            >
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div
+            class="tab-pane fade show active"
+            id="home"
+            role="tabpanel"
+            aria-labelledby="home-tab"
+          >
+            <div id="resultados" class="p-4" style="width: 70%">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <img src="img/home.jpg" alt="" width="250px" />
+                </div>
+                <div class="">
+                  <p><strong>Dirección:</strong> direccion</p>
+                  <p><strong>Ciudad:</strong> direccion</p>
+                  <p><strong>Teléfono:</strong> direccion</p>
+                  <p><strong>código postal:</strong> direccion</p>
+                  <p><strong>Tipo:</strong> direccion</p>
+                  <p><strong>Precio:</strong> direccion</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="filtroPrecio">
-            <label for="rangoPrecio">Precio:</label>
-            <input type="text" id="rangoPrecio" name="precio" value="" />
-          </div>
-          <div class="botonField">
-            <input type="button" class="btn white" value="Buscar" id="submitButton">
-          </div>
-        </div>
-      </form>
-    </div>
-    <div id="tabs" style="width: 75%;">
-      <ul>
-        <li><a href="#tabs-1">Bienes disponibles</a></li>
-        <li><a href="#tabs-2">Mis bienes</a></li>
-      </ul>
-      <div id="tabs-1">
-        <div class="colContenido" id="divResultadosBusqueda">
-          <div id="busqueda" class="tituloContenido card" style="justify-content: center;">
-            
+          <div
+            class="tab-pane fade"
+            id="profile"
+            role="tabpanel"
+            aria-labelledby="profile-tab"
+          >
+            <div id="misResultados" class="p-4" style="width: 70%">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <img src="img/home.jpg" alt="" width="250px" />
+                </div>
+                <div class="">
+                  <p><strong>Dirección:</strong> direccion</p>
+                  <p><strong>Ciudad:</strong> direccion</p>
+                  <p><strong>Teléfono:</strong> direccion</p>
+                  <p><strong>código postal:</strong> direccion</p>
+                  <p><strong>Tipo:</strong> direccion</p>
+                  <p><strong>Precio:</strong> direccion</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      
-      <div id="tabs-2" >
-        <div class="colContenido" id="divResultadosBusqueda">
-          <div id="resultado" class="tituloContenido card" style="justify-content: center;">
-          </div>
-        </div>
-      </div>
     </div>
-    <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
     <script type="text/javascript" src="js/ion.rangeSlider.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript" src="js/buscador.js"></script>
     <script type="text/javascript" src="js/jquery-ui.js"></script>
-    <script type="text/javascript" src="js/generalData.js"></script>
-    <script type="text/javascript">
-      $( document ).ready(function() {
-          $( "#tabs" ).tabs();
-          listData();
-      });
-    </script>
+    <script type="text/javascript" src="js/app.js"></script>
   </body>
-  </html>
+</html>

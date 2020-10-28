@@ -143,3 +143,6 @@ video#vidFondo {
 .card-action{
   text-align: right;
 }
+p{
+  margin-bottom: 0.5rem;
+}
