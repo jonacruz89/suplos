@@ -5,6 +5,7 @@ function dd($data)
     print_r('<br>');
     print_r($data);
     print_r('<br>');
+    die();
 }
 
 function response($data)
@@ -13,5 +14,5 @@ function response($data)
 
     $response = json_encode($data);
     echo $response;
-    exit;
+    die();
 }
