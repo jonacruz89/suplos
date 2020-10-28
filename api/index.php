@@ -47,6 +47,37 @@ switch ($uri) {
         ]);
         break;
 
+    case '/place':
+
+        $place = new Place();
+
+        $json = file_get_contents('php://input');
+        $request = json_decode($json);
+
+        $obj = (object)$place::find($request->id);
+
+        $data = $place->query("UPDATE places SET is_favorite = " . !$obj->is_favorite . " WHERE id = $obj->id");
+
+        response([
+            'status' => 200,
+            'message' => "Ok",
+            'data' => $data,
+        ]);
+        break;
+
+    case '/favorite':
+
+        $place = new Place();
+        $data = $place->query("SELECT * FROM places WHERE is_favorite = 1");
+
+        response([
+            'status' => 200,
+            'message' => "Ok",
+            'data' => $data,
+        ]);
+        break;
+
+
     default:
         response([
             'status' => 404,

@@ -12,7 +12,11 @@ class Place extends Connection
 
     static function find($id)
     {
-        return self::$db->select('places', $id);
+        $results = self::$db->select('places', $id);
+        if (!empty($results)) {
+            return $results[0];
+        }
+        return [];
     }
 
     static function all()
