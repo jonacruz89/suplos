@@ -1,0 +1,63 @@
+version: "3.3"
+
+services:
+  front:
+    build:
+      context: "./conf/nginx"
+    container_name: ${PROJECT_NAME}-front
+    restart: always
+    tty: true
+    environment:
+      - VIRTUAL_HOST=${VIRTUAL_HOST_FRONT}
+      - LETSENCRYPT_HOST=${LETSENCRYPT_HOST_FRONT}
+      - LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}
+    volumes:
+      - ${FRONT}:/var/www/html
+      - ./conf/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    links:
+      - php
+    network_mode: ${NETWORK_MODE}
+
+  back:
+    build:
+      context: "./conf/nginx"
+    container_name: ${PROJECT_NAME}-back
+    restart: always
+    tty: true
+    environment:
+      - VIRTUAL_HOST=${VIRTUAL_HOST_BACK}
+      - LETSENCRYPT_HOST=${LETSENCRYPT_HOST_BACK}
+      - LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}
+    volumes:
+      - ${BACK}:/var/www/html
+      - ./conf/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    links:
+      - php
+    network_mode: ${NETWORK_MODE}
+
+  php:
+    build:
+      context: "./conf/php"
+    container_name: ${PROJECT_NAME}-php
+    tty: true
+    restart: always
+    volumes:
+      - ${FRONT}:/var/www/html
+    links:
+      - mysql
+    network_mode: ${NETWORK_MODE}
+
+  mysql:
+    build:
+      context: "./conf/mysql"
+    container_name: ${PROJECT_NAME}-mysql
+    restart: always
+    tty: true
+    volumes:
+      - ${MYSQL_DATA}:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    network_mode: ${NETWORK_MODE}
