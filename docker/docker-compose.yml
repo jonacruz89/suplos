@@ -42,7 +42,7 @@ services:
     tty: true
     restart: always
     volumes:
-      - ${FRONT}:/var/www/html
+      - ${BACK}:/var/www/html
     links:
       - mysql
     network_mode: ${NETWORK_MODE}
